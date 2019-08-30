@@ -40,7 +40,7 @@ with emplid_and_college_code_survey (emplid, college_code, term_code, FULL_FILE_
             select REGEXP_REPLACE(column_value, '(.*)-.*', '\1') as emplid, REGEXP_REPLACE(column_value, '.*-(.*)', '\1') as collage_alias 
             from
             table(sys.odcivarchar2list
-            -- This is the list of emplids and college_alias given to us by AP team Lindsay or Jen
+            -- This is the list of id and college_alias given to us
             ('000012345-CAED',...')
             )
         ) emplid_to_alias

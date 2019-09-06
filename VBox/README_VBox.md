@@ -37,5 +37,32 @@ $ ./VBoxManage.exe modifymedium "F:\VMs\l-climateWeb1\l-climateWeb1-2018-10-26.v
 ```
 - Settings -> Storage -> Click on "Add hard disk." and "Choose existing disk"
 
+### Recovered from missing files after resize
+
+#### Find the snapshot that had the last change
+
+I looked in the "F:\VMs\juanLinux\Snapshots" directory and found the snapshot that had the last modified date that I wanted. 
+
+```bash
+$ ./VBoxManage.exe list hdds
+UUID:           947cadf1-edc7-4023-a311-d6cec2a8f41e
+Parent UUID:    86c91997-b355-441b-8c59-5ceebd635f4b
+State:          created
+Type:           normal (differencing)
+Location:       F:\VMs\juanLinux\Snapshots/{947cadf1-edc7-4023-a311-d6cec2a8f41e}.vdi
+Storage format: VDI
+Capacity:       16384 MBytes
+Encryption:     disabled
+
+```
+
+Clone a new disk from that snapshot. 
+```bash
+$ ./VBoxManage clonemedium disk 947cadf1-edc7-4023-a311-d6cec2a8f41e "F:\VMs\juanLinux\juanLinuxRecover.vdi"
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Clone medium created in format 'VDI'. UUID: b56f13b1-86b5-4806-b42d-de7c46c10cdd
+```
+Attach that new hardisk and remove the old disk then reboot. 
+
 
 

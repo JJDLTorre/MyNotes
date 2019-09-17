@@ -25,6 +25,44 @@ To https://github.com/JJDLTorre/MySQL.git
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 ```
 
+## How to verify that MySQL has the correct character set
+```SQL
+SHOW VARIABLES LIKE 'character_set%';
+-- # Variable_name, Value
+-- 'character_set_client', 'utf8'
+-- 'character_set_connection', 'utf8'
+-- 'character_set_database', 'latin1'
+-- 'character_set_filesystem', 'binary'
+-- 'character_set_results', 'utf8'
+-- 'character_set_server', 'latin1'
+-- 'character_set_system', 'utf8'
+-- 'character_sets_dir', '/usr/share/mysql/charsets/'
+
+# After vi /etc/my.cnf: character-set-server=utf8
+-- # Variable_name, Value
+-- 'character_set_client', 'utf8'
+-- 'character_set_connection', 'utf8'
+-- 'character_set_database', 'latin1'
+-- 'character_set_filesystem', 'binary'
+-- 'character_set_results', 'utf8'
+-- 'character_set_server', 'utf8'
+-- 'character_set_system', 'utf8'
+-- 'character_sets_dir', '/usr/share/mysql/charsets/'
+
+-- ALTER DATABASE myDatabase CHARACTER SET utf8;
+-- commit;
+SHOW VARIABLES LIKE 'character_set%';
+-- # Variable_name, Value
+-- 'character_set_client', 'utf8'
+-- 'character_set_connection', 'utf8'
+-- 'character_set_database', 'utf8'
+-- 'character_set_filesystem', 'binary'
+-- 'character_set_results', 'utf8'
+-- 'character_set_server', 'utf8'
+-- 'character_set_system', 'utf8'
+-- 'character_sets_dir', '/usr/share/mysql/charsets/'
+```
+
 ## Example of using WITH and UNION
 ```SQL
 -- Get course and instructor surveys order by term_code and (course then instructor survey)

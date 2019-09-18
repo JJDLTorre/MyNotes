@@ -109,10 +109,11 @@ order by order_files.emplid, order_files.college_code, order_files.term_code, or
  Run this program mysql-connector-odbc-5.2.2-win32.msi
  
 ### Add the Data Source
-[] Run C:\Windows\SysWOW64\odbcad32.exe
-[] Click on Add...
-[] Select "MySQL ODBC 5.2w Driver"
-[] Fill out the Configurations and press OK
+
+- Run C:\Windows\SysWOW64\odbcad32.exe
+- Click on Add...
+- Select "MySQL ODBC 5.2w Driver"
+- Fill out the Configurations and press OK
 
 
 

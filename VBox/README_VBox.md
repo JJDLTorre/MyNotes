@@ -1,5 +1,14 @@
 ### VirtualBox notes
 
+## New CentOS VM
+
+### Add user to vboxsf group
+
+```bash
+usermod -G vboxsf -a jdelat04
+```
+
+
 ## How to resize your dirve
 
 - Settings -> Storage -> Select th dirve and right-click and  Remove it

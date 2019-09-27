@@ -1,0 +1,61 @@
+" For testing to show verbose.
+" set verbose=1
+
+:gui
+
+" Set window size
+set lines=90 columns=90
+
+" Themes and Start color
+color JuanDesert
+syntax on
+
+" Set the font to Courier
+set guifont=Courier
+
+set autoindent              " always set autoindenting on
+set cindent                 " smart indenting for c-like code
+set copyindent              " copy the previous indentation on autoindenting
+set exrc                    " Enables the reading of .vimrc in the current directory
+set history=1000            " Number of Command Line history. 
+set hlsearch                " highlight searched for phrases
+set ignorecase              " ignore case
+set incsearch               " incremental searching
+set magic                   " for regex
+set makeprg=make\ %:t:r     " Compile the current file 
+set number                  " Show Number on the side of the view
+set ruler                   " show the cursor position all the time
+set sh=C:\\cygwin\\bin\\bash.exe
+set showcmd                 " display incomplete commands
+set showmatch               " show matching brackets
+set showmode                " Show mode
+set smartcase               " case sensitive search when you capitalize something
+set visualbell              " no more beeping!
+
+
+" Seting Ctrl+Space to go to Normal mode from Insert (imap) or Command (cmap) modes
+map! <C-Space> <C-\><C-N>
+
+" Scrolling around 
+nmap <C-j> <ScrollWheelDown>
+nmap <C-k> <ScrollWheelUp>
+
+
+" To make Ctrl+C and Ctr+V to do cut and paset like MS.
+" Ctrl+Q for Visual Block mode.
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+
+" vim-cpp-enhanced-highlight
+let g:cpp_class_scope_highlight = 1
+
+augroup C
+   "number of spaces in a tab
+   "number of spaces to use for >>
+   "replace tabs with spaces if want TAB do CTRL-V<TAB>
+   au FileType c,cpp,java,perl,python,sh,html set tabstop=3      
+   au FileType c,cpp,java,perl,python,sh,html set shiftwidth=3      
+   au FileType c,cpp,java,perl,python,sh,html set expandtab      
+augroup END
+

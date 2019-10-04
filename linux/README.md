@@ -43,3 +43,32 @@ Note: Forwarding request to 'systemctl is-enabled sshd.service'.
 enabled
 
 ```
+
+## SSH Authorized Key 
+
+### Client
+
+- Create ssh-key and get the public key
+```bash
+$ ssh-keygen
+$ cat .ssh/id_rsa.pub
+```
+- Set the correct permissions
+```bash
+$ chmod 700 ~/.ssh
+$ chmod 400 ~/.ssh/id_rsa
+```
+
+### Server
+
+- Create directory and authorized_keys
+```bash
+$ mkdir .ssh
+$ echo client_id_rsa.pub >> .ssh/authorized_keys
+```
+
+- Set the correct permissions
+```bash
+$ chmod 700 ~/.ssh
+$ chmod 600 ~/.ssh/authorized_keys
+```

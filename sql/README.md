@@ -115,8 +115,36 @@ order by order_files.emplid, order_files.college_code, order_files.term_code, or
 - Select "MySQL ODBC 5.2w Driver"
 - Fill out the Configurations and press OK
 
+## Install MySQL drivers for Python
+
+ ### Install brew first
+ ```bash
+ jdelat04@ITS-JDELAT04-1 /usr/local/homebrew
+$ curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   128    0   128    0     0    446      0 --:--:-- --:--:-- --:--:--   447
+100 1696k  100 1696k    0     0  1749k      0 --:--:-- --:--:-- --:--:-- 16.4M
+ ```
+ And add it to the .bashrc_profile
+ ```
+ PATH="/usr/local/homebrew/bin:${PATH}"
+ ```
+ ### Install XCode
+```bash
+xcode-select --install
+```
+
+### Install mysql-client
+```bash 
+jdelat04@ITS-JDELAT04-1 /usr/local/homebrew/bin
+$ brew install mysql-client
+```
 
 
+```base
+ jdelat04@ITS-JDELAT04-1 /usr/local/homebrew/bin
+$ brew install mysql-client
 
- 
+ ```
  

@@ -1,0 +1,21 @@
+<project>
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>local.Hello</groupId>
+ <artifactId>hello</artifactId>
+ <version>1.0</version>
+ <build>
+    <pluginManagement>
+        <plugins>
+            <!-- Default java version was 1.5, to change the default version added this plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+</build>
+</project>

@@ -1,0 +1,1 @@
+java -cp target/hello-1.0.jar local.Hello.Main

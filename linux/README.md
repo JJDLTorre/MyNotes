@@ -72,3 +72,26 @@ $ echo client_id_rsa.pub >> .ssh/authorized_keys
 $ chmod 700 ~/.ssh
 $ chmod 600 ~/.ssh/authorized_keys
 ```
+
+## Verifying SSL Certificates
+
+nginx errored: 
+```
+failed (SSL: error:0B080074:x509 certificate routines:X509_check_private_key:key values mismatch)
+```
+
+To look at the certificate:
+```
+openssl x509 -noout -text -in yourcert.cert
+```
+Look for the "Subject" and then verify you see you site's infor, if not it's more likely the CA. 
+
+### Check the MD5 has of both the public key and cert
+
+```
+$ openssl x509 -noout -modulus -in yourcert.cer | openssl md5
+12345676aafcbb03e54de5d1dd1b
+
+$ openssl rsa -noout -modulus -in yourcert.key | openssl md5
+12345676aafcbb03e54de5d1dd1b
+```

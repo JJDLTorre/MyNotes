@@ -6,8 +6,15 @@
         "-p",
         "*_test.py"
     ],
-    "python.testing.unittestEnabled": true,
-    "python.pythonPath": "/usr/local/bin/python3",
-    "python.testing.pytestEnabled": false,
-    "python.testing.nosetestsEnabled": false
+    "python.testing.pytestArgs": [
+        "-o",
+        "junit_family=xunit1",
+        "--doctest-modules",
+        "--doctest-report",
+        "ndiff"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.nosetestsEnabled": false,
+    "python.pythonPath": "/usr/local/bin/python3"
 }

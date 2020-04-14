@@ -1,21 +1,29 @@
 # Juan_Linux_Notes
 
 ### Crate users and add them to the sudoers with allow all
+```bash
 adduser user01
 passwd  user01
 echo "%user01 ALL=(ALL) ALL" > /etc/sudoers.d/user01
+```
 
 ### Add up/down arrows to get history matches
+```bash
 sudo sed -ie 's/^.*: history-search-backward/\"\\e[A\": history-search-backward/' /etc/inputrc
 sudo sed -ie 's/^.*: history-search-forward/\"\\e[B\": history-search-forward/' /etc/inputrc
+```
 
 ### Allow ssh and restart sshd
+```bash
 sed -ie 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 systemctl restart sshd
+```
 
 ### Move MySQL logs to my dir and change owner
+```bash
 mv /var/lib/mysql/l-moodledb1.log /home/user01/.
 chown user01:user01 /home/user01/l-moodledb1.log 
+```
 
 ### Append group to a user
 

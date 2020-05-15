@@ -53,3 +53,8 @@ mvn package
 $ java -cp target/hello-1.0.jar local.Hello.Main
 Hello world
 ```
+
+## View the Manifesto and files in the jar
+```bash
+$ jar -tvxf target/hello-1.0.jar
+```

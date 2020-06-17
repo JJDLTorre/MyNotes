@@ -51,7 +51,7 @@ $ command | tee -a logs/`date +%Y-%m-%d_%H-%M-%S`_command.log
 
 ### Adding personal ssh public key and current user
 Vagrantfile
-```
+```Ruby
   config.vm.provision "shell" do |s|
 
     ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip 

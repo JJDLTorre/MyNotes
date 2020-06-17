@@ -41,3 +41,8 @@ C
 D
 F
 ```
+
+### Tee to a log file
+```
+$ command | tee -a logs/`date +%Y-%m-%d_%H-%M-%S`_command.log
+```

@@ -1,5 +1,5 @@
 ### Edit Ansible vault files
 
 ```
-EDITOR=code ansible-vault edit test.txt
+EDITOR='code --wait' ansible-vault edit test.txt
 ```

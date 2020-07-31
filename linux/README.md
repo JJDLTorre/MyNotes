@@ -120,3 +120,18 @@ $ openssl x509 -noout -modulus -in yourcert.cer | openssl md5
 $ openssl rsa -noout -modulus -in yourcert.key | openssl md5
 12345676aafcbb03e54de5d1dd1b
 ```
+
+
+### Command line
+Date and time format
+
+date +%F_%H-%M-%S	2019-01-25_08-57-25
+date +%F
+2019-01-25
+date +%F_%H-%M-%S
+```
+#!/bin/bash
+DATE_TIME=`date +%Y-%m-%d_%H:%M:%S"`
+ 
+echo "${DATE_TIME} Start Script"
+```

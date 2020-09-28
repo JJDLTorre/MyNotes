@@ -5,4 +5,7 @@
            version="{{ app_provisioning_branch }}"
            force=yes
 
-    
+    - name: Copy Properties file
+      template: src="app.properties"
+                dest="{{ app_provisioning_dir }}/app.properties"
+

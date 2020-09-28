@@ -1,0 +1,32 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+    config.vm.box = "centos/7"
+  
+    # Create a private network, which allows host-only access to the machine
+    # using a specific IP.
+    config.vm.network "private_network", ip: "192.168.33.123" #, hostsupdater: "skip"
+    config.vm.hostname = "l-server"
+    
+    # Add the current users and their public key. 
+    config.vm.provision "shell" do |s|
+  
+      ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip 
+      s.inline = <<-SHELL
+        /vagrant/provision/useArrowForHistory.sh
+        
+        echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
+  
+        # Add current user as sudoer
+        /vagrant/provision/addUserWithSudoer.sh #{ENV['USER']} "/home"
+
+        # Add user to provision
+        /vagrant/provision/addUserWithDebug.sh "appuser" "/home"
+        
+        yum install -y git
+      SHELL
+    end
+  end
+  

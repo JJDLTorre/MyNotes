@@ -1,0 +1,2 @@
+Host {{ git_host }}
+IdentityFile=~/.ssh/{{ ssh_key_name }}

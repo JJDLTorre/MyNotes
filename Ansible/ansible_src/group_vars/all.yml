@@ -1,0 +1,9 @@
+
+app_user: "appuser"
+home: "/home/{{ app_user }}"
+
+# Key Parameters
+git_host: github.com
+git_url: git@github.com:JJDLTorre/myPython.git
+
+ssh_key_name: id_rsa

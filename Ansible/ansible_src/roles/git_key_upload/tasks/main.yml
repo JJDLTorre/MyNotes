@@ -1,0 +1,28 @@
+
+---
+  - name: Create .ssh directory
+    file: path="{{ home }}/.ssh"
+        mode=700
+        state=directory
+
+  - name: Copy private ssh key
+    copy: content="{{ ssh_key }}"
+        dest="{{ home }}/.ssh/{{ ssh_key_name }}"
+        mode=0600
+        owner={{ app_user }}
+          
+  - name: Copy public ssh key
+    copy: content="{{ ssh_public_key }}"
+        dest="{{ home }}/.ssh/{{ ssh_key_name }}.pub"
+        mode=700
+
+  - name: Copy .ssh/config file to server
+    template: src=ssh-config
+        dest="{{ home }}/.ssh/config"
+        mode=0700
+
+  - name: Upload public fingerprint
+    lineinfile: dest="{{ home }}/.ssh/known_hosts"
+        create=yes
+        state=present
+        line="{{ git_fingerprint }}"

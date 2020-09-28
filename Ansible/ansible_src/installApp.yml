@@ -1,0 +1,10 @@
+---
+
+- hosts: app_server
+  serial: 1
+  gather_facts: True
+  become: true
+  become_user: "{{ app_user }}"
+
+  roles:
+    - git_key_upload

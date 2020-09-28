@@ -1,0 +1,4 @@
+git_fingerprint: "{{ vault_git_fingerprint }}"
+ssh_public_key: "{{ vault_ssh_public_key }}"
+ssh_key: "{{ vault_ssh_key }}"
+say_hello: "Hello World!"

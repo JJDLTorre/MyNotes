@@ -1,0 +1,8 @@
+[app_server]
+l-server
+
+[local:children]
+app_server
+
+[local_vault:children]
+local

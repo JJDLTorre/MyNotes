@@ -1,0 +1,8 @@
+---
+    - name: Checkout srouce code
+      git: repo="{{ git_app_url }}"
+           dest="{{ app_provisioning_dir }}"
+           version="{{ app_provisioning_branch }}"
+           force=yes
+
+    

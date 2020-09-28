@@ -30,3 +30,14 @@ ansible-playbook -i hosts/local -vvv -K --ask-vault-pass installApp.yml 2>&1 | t
 ```
 $ ansible app_server -i hosts/local --ask-vault-pass -m debug -a "msg={{ ssh_key }}"
 ```
+
+## Vagrant snapshots
+
+### Save snapshot
+```
+vagrant snapshot save before_adding_provisioning
+```
+### Restore snapshot
+```
+vagrant snapshot restore before_adding_provisioning
+```

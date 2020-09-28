@@ -8,3 +8,4 @@
 
   roles:
     - git_key_upload
+    - app_provisioning_install

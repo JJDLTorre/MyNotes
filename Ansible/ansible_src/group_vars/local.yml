@@ -2,3 +2,7 @@ git_fingerprint: "{{ vault_git_fingerprint }}"
 ssh_public_key: "{{ vault_ssh_public_key }}"
 ssh_key: "{{ vault_ssh_key }}"
 say_hello: "Hello World!"
+
+git_app_url: "{{ vault_app_url }}"
+app_provisioning_dir: "{{ home }}/app_dir"
+app_provisioning_branch: master

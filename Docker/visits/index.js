@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     //         restart: always
     //         restart: on-failure
     //         restart: unless-stopped
-    process.exit(0);
+    //process.exit(0);
 
     client.get('visits', (err, visits) => {
         res.send('Number of visits is: ' + visits);

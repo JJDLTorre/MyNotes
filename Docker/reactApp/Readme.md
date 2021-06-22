@@ -20,3 +20,8 @@ docker run -it -p 3000:3000 <IMAGE_ID>
 docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <IMAGE_ID>
 ```
 The "-v /app/node_modules " ignores that dir and use the one in the container. 
+
+## Start using docker-compose
+```
+docker-compose up
+```

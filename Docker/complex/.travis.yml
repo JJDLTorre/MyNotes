@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jjdltorre/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run jjdltorre/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t jjdltorre/multi-client ./client
+  - docker build -t jjdltorre/multi-nginx ./nginx
+  - docker build -t jjdltorre/multi-server ./server
+  - docker build -t jjdltorre/multi-worker ./worker
+  # Log in to the Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Push to docker hub
+  - docker push jjdltorre/multi-client
+  - docker push jjdltorre/multi-nginx
+  - docker push jjdltorre/multi-server
+  - docker push jjdltorre/multi-worker

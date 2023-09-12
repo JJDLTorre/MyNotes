@@ -1,4 +1,5 @@
 import datetime
+import json
 import logging
 import user_auth
 from typing import Callable, Optional, Union
@@ -153,3 +154,27 @@ class UserClient(O365.Account):
             return self.con.request_token(token_url)
 
         raise ValueError("Unhandled 'auth_flow_type'.")
+
+    def get_rclone_config(self, drive_type: str, drive_id: str) -> dict:
+        """Gets the MS Graph API configuration & token for use with Rclone.
+
+        Args:
+            drive_type (str): The type of the drive to connect to ("personal", "business", or
+            "documentLibrary")
+            drive_id (str): The ID of the drive to use.
+
+        Returns:
+            dict: Rclone remote config
+        """
+        tenat_id = self.client_credentials.tenant_id
+
+        return {
+            "type": "onedrive",
+            "client_id": self.client_credentials.client_id,
+            "client_secret": self.client_credentials.client_secret,
+            "token": json.dumps(self.con.token_backend.get_token()),
+            "auth_url": f"https://login.microsoftonline.com/{tenat_id}/oauth2/v2.0/authorize",
+            "token_url": f"https://login.microsoftonline.com/{tenat_id}/oauth2/v2.0/token",
+            "drive_type": drive_type,
+            "drive_id": drive_id,
+        }

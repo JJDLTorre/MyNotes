@@ -1,8 +1,11 @@
+from pathlib import Path
+import tempfile
 import user_auth
 import user_client
 import configparser
 import logging
 import O365
+import Rclone
 from Logging import setup_logging_and_console
 
 
@@ -48,5 +51,30 @@ if __name__ == '__main__':
         config['MS_INFO']['ms_site_id'])
 
     print(vars(sharepoint_site))
+    drive_name = config['RCLONE_INFO']['drive_name']
+    rclone_config = {drive_name: user.get_rclone_config(
+        config['RCLONE_INFO']['drive_type'], config['RCLONE_INFO']['drive_id'])}
+
+    tmp_dir = config['RCLONE_INFO']['rclone_config_path']
+    Path(tmp_dir).mkdir(parents=True, exist_ok=True)
+    # write rclone config file with ConfigParser
+    with tempfile.NamedTemporaryFile(
+        mode="wt",
+        encoding="UTF-8",
+        dir=tmp_dir,
+        prefix="rclone_",
+        suffix=".conf",
+        delete=False,
+    ) as cfg_file:
+        logging.debug("Rclone config file: '%s'", cfg_file.name)
+        config_parser = configparser.ConfigParser()
+        config_parser.read_dict(rclone_config)
+        config_parser.write(cfg_file)
+        config_file_path = cfg_file.name
+    rclone_runner = Rclone.Rclone(config_file_path=config_file_path)
+    result = rclone_runner.run(["lsd", f"{drive_name}:"])
+    print(result)
+    result = rclone_runner.lsjson(f"{drive_name}:")
+    print(result)
 
     logging.info("Ending get_sharepoint_info()")
